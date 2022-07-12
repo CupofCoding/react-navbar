@@ -1,6 +1,5 @@
 {
-  "homepage" : "https://cupofcoding.github.io/react-navbar/",
-  
+  "homepage": "https://cupofcoding.github.io/react-navbar/",
   "name": "react-navbar",
   "version": "0.1.0",
   "private": true,
