@@ -41,6 +41,7 @@ function App() {
         <Route path="/autumn" element={<Autumn/>} />
         <Route path="/winter" element={<Winter/>} />
       </Routes>
+        {/* Note*: Whole page rerenders whenever anchor(a) tags are used and needs to be using Link components from react-router*/}
     </div>
   </>
   )
