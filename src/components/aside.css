@@ -1,0 +1,58 @@
+/* CSS Variables aka Custom Properties*/
+:root {
+    --bg: #242424;
+    --bg-accent: #484a4d;
+    --text-color: #dadce1;
+    --nav-size: 60px;
+    --border: 1px solid #474a4d;
+    --border-radius: 8px;
+    /* animation speed */
+    --speed: 500ms;
+}
+
+.aside ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.aside a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.aside-container {
+    padding: 1rem 0;
+    height: var(--nav-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: var(--bg); */
+    /* border-bottom: var(--border); */
+}
+
+.aside-nav {
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.aside-item{
+    width: calc(var(--nav-size) * 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-button {
+    /* new css variable scoped to the class */
+    --button-size: calc(var(--nav-size) * 0.5);
+    width: var(--button-size);
+    height: var(--button-size);
+    background-color: #474a4d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

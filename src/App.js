@@ -7,6 +7,9 @@ import Winter from "./pages/Winter";
 import { Route, Routes } from 'react-router-dom';
 //these two components allow us to define all of our routes and group them together
 
+//The practice of writing small reuseable components is component composition. 
+//New components contain jsx(javascript xml) that's returned from the function by using an extension from react. 
+
 function App() {
   // let component
   // // eslint-disable-next-line default-case
