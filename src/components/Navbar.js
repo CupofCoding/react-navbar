@@ -1,5 +1,5 @@
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
-import { Menu, MenuItem } from './Menu';
+import { DropdownMenu, Menu, MenuItem } from './Menu';
 // import { ReactComponent as IconName } from './icons/icon.svg';   then pass icon={<Icon />} component instead of icon:="X"
 // import React, { useState } from 'react';
 
@@ -38,7 +38,7 @@ export default function Navbar() {
                 <MenuItem icon="-" />
                 <MenuItem icon="+"> 
                 {/* useState hook is needed to open and close menu*/}
-                <p>Main Menu</p>
+                    <DropdownMenu></DropdownMenu>
                 </MenuItem>
             </Menu>
         </ul>

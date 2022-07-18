@@ -2,6 +2,38 @@ import './menu.css';
 import React, { useState } from 'react';
 
 //In React, Props are Data and UI elements can be passed from parent to child as arguments that can be referenced as part of the template.
+
+function DropdownMenu() {
+
+  // DropdownMenu's can have multiple items, nested component for simplicity 
+
+  function DropdownItem(props){
+    return (
+      // pass in props to control the link text
+      <a href='#' className='drop-menu-item'>
+        {/* if left or right Icon prop is passed, then it will be rendered. If blank, nothing happens. Text is taken as a child. */}
+        <span className='icon-button'>{props.leftIcon}</span>
+
+        {props.children}
+
+        <span className='icon-button'>{props.rightIcon}</span>
+      </a> 
+    );
+  }
+
+  return(
+  <div className='dropdown'>
+    <DropdownItem>Menu Item</DropdownItem>
+    <DropdownItem 
+      // leftIcon={<ItemIcon />}
+      // rightIcon={<ItemIcon />}
+      >
+    </DropdownItem>
+  </div>
+  )
+}
+
+
 function Menu(props) {
   return (
     <menu className='menu-container'>
@@ -10,7 +42,6 @@ function Menu(props) {
     </menu>
   )
 }
-
 
 //List Item is the main element and 'a' link element is nested inside of it. 'a' element represents the icons
 function MenuItem(props) {
@@ -32,4 +63,4 @@ function MenuItem(props) {
   )
 }
 
-export { Menu, MenuItem };
+export { Menu, MenuItem, DropdownMenu };
