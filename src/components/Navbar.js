@@ -1,5 +1,7 @@
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
-import { Aside, AsideItem } from './Aside';
+import { Menu, MenuItem } from './Menu';
+// import { ReactComponent as IconName } from './icons/icon.svg';   then pass icon={<Icon />} component instead of icon:="X"
+// import React, { useState } from 'react';
 
 export default function Navbar() {
     // return JSX fragment 
@@ -31,10 +33,14 @@ export default function Navbar() {
             <SetLink to="/summer">Summer</SetLink>
             <SetLink to="/autumn">Autumn</SetLink>
             <SetLink to="/winter">Winter</SetLink>
-            <Aside>
-                <AsideItem icon="X" />
-                <AsideItem icon="O" />
-            </Aside>
+            <Menu>
+                {/* Icons aren't passed as a direct child is to avoid the other Items having conflicts since we want the dropdown menu to be a direct child */}
+                <MenuItem icon="-" />
+                <MenuItem icon="+"> 
+                {/* useState hook is needed to open and close menu*/}
+                <p>Main Menu</p>
+                </MenuItem>
+            </Menu>
         </ul>
         </nav>
     )
