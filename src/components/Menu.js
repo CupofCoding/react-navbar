@@ -1,38 +1,8 @@
 import './menu.css';
 import React, { useState } from 'react';
+import { ReactComponent as ChevDown } from '../icons/chevron-down-solid.svg';
 
 //In React, Props are Data and UI elements can be passed from parent to child as arguments that can be referenced as part of the template.
-
-function DropdownMenu() {
-
-  // DropdownMenu's can have multiple items, nested component for simplicity 
-
-  function DropdownItem(props){
-    return (
-      // pass in props to control the link text
-      <a href='#' className='drop-menu-item'>
-        {/* if left or right Icon prop is passed, then it will be rendered. If blank, nothing happens. Text is taken as a child. */}
-        <span className='icon-button'>{props.leftIcon}</span>
-
-        {props.children}
-
-        <span className='icon-button'>{props.rightIcon}</span>
-      </a> 
-    );
-  }
-
-  return(
-  <div className='dropdown'>
-    <DropdownItem>Menu Item</DropdownItem>
-    <DropdownItem 
-      // leftIcon={<ItemIcon />}
-      // rightIcon={<ItemIcon />}
-      >
-    </DropdownItem>
-  </div>
-  )
-}
-
 
 function Menu(props) {
   return (
@@ -62,5 +32,33 @@ function MenuItem(props) {
     </li>
   )
 }
+
+function DropdownMenu() {
+
+  // DropdownMenu's can have multiple items, nested component for simplicity 
+
+  function DropdownItem(props){
+    return (
+      // pass in props to control the link text
+      <a href='#' className='dropdown-menu-item'>
+        {/* if left or right Icon prop is passed, then it will be rendered. If blank, nothing happens. Text is taken as a child. */}
+        <span className='icon-button left-icon'>{props.leftIcon}</span>
+        {props.children}
+        <span className='icon-button right-icon'>{props.rightIcon}</span>
+      </a> 
+    );
+  }
+
+  return(
+  <div className='dropdown'>
+    <DropdownItem>Menu Item</DropdownItem>
+    <DropdownItem 
+      // leftIcon={<ItemIcon />}
+      rightIcon={<ChevDown />}
+      >
+    </DropdownItem>
+  </div>
+  )
+};
 
 export { Menu, MenuItem, DropdownMenu };
