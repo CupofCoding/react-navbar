@@ -1,6 +1,9 @@
 import './menu.css';
 import React, { useState } from 'react';
 import { ReactComponent as ChevDown } from '../icons/chevron-down-solid.svg';
+// transition component to control appear, enter, exit states to control which menus are visible and rendering multiple menus being added or removed from the app
+import { CSSTransition } from 'react-transition-group';
+
 
 //In React, Props are Data and UI elements can be passed from parent to child as arguments that can be referenced as part of the template.
 
@@ -36,8 +39,11 @@ function MenuItem(props) {
 function DropdownMenu() {
 
   // DropdownMenu's can have multiple items, nested component for simplicity 
+  // set current state then change state for menus. Main menu is Default and parent
+  const [activeMenu, setActiveMenu] = useState('main') //
 
   function DropdownItem(props){
+
     return (
       // pass in props to control the link text
       <a href='#' className='dropdown-menu-item'>
