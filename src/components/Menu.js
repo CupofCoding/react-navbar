@@ -39,7 +39,7 @@ function MenuItem(props) {
 function DropdownMenu() {
 
   // DropdownMenu's can have multiple items, nested component for simplicity 
-  // set current state then change state for menus. Main menu is Default and parent
+  // set current state then change state for menus. Main menu is Default and parent; Wrapping the dropdown components in a CSS transition component to animate the content.
   const [activeMenu, setActiveMenu] = useState('main') //
 
   function DropdownItem(props){
@@ -57,12 +57,21 @@ function DropdownMenu() {
 
   return(
   <div className='dropdown'>
-    <DropdownItem>Menu Item</DropdownItem>
-    <DropdownItem 
-      // leftIcon={<ItemIcon />}
-      rightIcon={<ChevDown />}
-      >
-    </DropdownItem>
+    {/* Looks for a prop of in={} when true will animate the children into the UI. unmountOnExit removes the children when not active with a timeout that defines the duration of the animation. Adds or removes classes based on the state of the animation and CSS handles the animation. */}
+    <CSSTransition 
+    in={activeMenu === 'main'} 
+    unmountOnExit 
+    timeout={500}
+    classNames="menu-default">
+      <div>
+        <DropdownItem>Menu Item</DropdownItem>
+        <DropdownItem 
+          // leftIcon={<ItemIcon />}
+          rightIcon={<ChevDown />}
+          >
+        </DropdownItem>
+      </div>
+    </CSSTransition>
   </div>
   )
 };
