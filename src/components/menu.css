@@ -92,6 +92,9 @@
     padding: 1rem;
     /* hides overlapping child elements */
     overflow: hidden;
+
+    /* menu should shrink and grow based on size of current menu */
+    transition: height var(--speed) ease;
 }
 
 .dropdown-menu-item{
