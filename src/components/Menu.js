@@ -1,6 +1,8 @@
 import './menu.css';
 import React, { useState } from 'react';
-import { ReactComponent as ChevDown } from '../icons/chevron-down-solid.svg';
+// import { ReactComponent as ChevDown } from '../icons/chevron-down-solid.svg';
+import { ReactComponent as ChevRight } from '../icons/chevron-right-solid.svg';
+import { ReactComponent as TreeIcon } from '../icons/tree-solid.svg';
 // transition component to control appear, enter, exit states to control which menus are visible and rendering multiple menus being added or removed from the app
 import { CSSTransition } from 'react-transition-group';
 
@@ -46,7 +48,7 @@ function DropdownMenu() {
 
     return (
       // pass in props to control the link text
-      <a href='#' className='dropdown-menu-item'>
+      <a href='#' className='dropdown-menu-item' onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
         {/* if left or right Icon prop is passed, then it will be rendered. If blank, nothing happens. Text is taken as a child. */}
         <span className='icon-button left-icon'>{props.leftIcon}</span>
         {props.children}
@@ -63,11 +65,34 @@ function DropdownMenu() {
     unmountOnExit 
     timeout={500}
     classNames="menu-default">
-      <div>
-        <DropdownItem>Menu Item</DropdownItem>
+      <div className='menu'>
+        <DropdownItem 
+          // rightIcon={<ChevRight />}
+          >Menu Item
+        </DropdownItem>
         <DropdownItem 
           // leftIcon={<ItemIcon />}
-          rightIcon={<ChevDown />}
+          rightIcon={<ChevRight />}
+          goToMenu="menu-default"
+          >
+        </DropdownItem>
+      </div>
+    </CSSTransition>
+
+    <CSSTransition 
+    in={activeMenu === 'seasons-menu'} 
+    unmountOnExit 
+    timeout={500}
+    classNames="menu-secondary">
+      <div className='menu'>
+        <DropdownItem 
+          // rightIcon={<ChevRight />}
+          >Settings
+        </DropdownItem>
+        <DropdownItem 
+          leftIcon={<TreeIcon />}
+          rightIcon={<ChevRight />}
+          goToMenu="seasons-menu"
           >
         </DropdownItem>
       </div>

@@ -131,3 +131,41 @@
 .right-icon{
     margin: 0 0 0 10px;    
 }
+
+/* defined menu animations where classes are added and removed based on state; when the prop is true, will add menu primary enter class then enter-active to div then after a timeout then it will add exit class then the exit-active class*/
+.menu-default-enter{
+    position: absolute;
+    transform: translateX(-110%);
+}
+
+.menu-default-enter-active{    
+    transform: translateX(0%);
+    transition: all var(--speed) ease;
+}
+
+.menu-default-exit{
+    position: absolute;
+}
+
+.menu-default-exit-active{
+    transform: translateX(-110%);
+    transition: all var(--speed) ease;
+}
+
+.menu-secondary-enter{    
+    transform: translateX(110%);
+}
+
+.menu-secondary-enter-active{    
+    transform: translateX(0%);
+    transition: all var(--speed) ease;
+}
+
+.menu-secondary-exit{
+    position: absolute;
+}
+
+.menu-secondary-exit-active{
+    transform: translateX(110%);
+    transition: all var(--speed) ease;
+}
