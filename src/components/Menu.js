@@ -1,9 +1,11 @@
 import './menu.css';
 import React, { useState } from 'react';
-// import { ReactComponent as ChevDown } from '../icons/chevron-down-solid.svg';
+// import React, { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { ReactComponent as ChevRight } from '../icons/chevron-right-solid.svg';
 import { ReactComponent as ChevLeft } from '../icons/chevron-left-solid.svg';
 
+import { ReactComponent as HomeIcon } from '../icons/house-solid.svg';
 import { ReactComponent as SeasonsIcon } from '../icons/wind-solid.svg';
 import { ReactComponent as SpringSeedling } from '../icons/seedling-solid.svg';
 import { ReactComponent as SummerUmbrella } from '../icons/umbrella-beach-solid.svg';
@@ -52,11 +54,12 @@ function DropdownMenu() {
   const [activeMenu, setActiveMenu] = useState('main') //
   // Dynamic way to manage height for when Old menu still shows up on the DOM using useState and calculating height with a DOM element as its argument since there is a property to offset height.
   const [menuHeight, setMenuHeight] = useState(null);
-
+  
   function calcHeight(ele) {
     // offsetHeight contains the actual height and pixels of the element
+    // const height = ele.offsetHeight; 
     const height = ele.offsetHeight;
-    // CSS transition has lifecycle hooks that provide information on enter and intiates a callback when onEnter is first added to the element
+    // CSS transition has lifecycle hooks that provide information on enter and intiates a callback when onEnter is first added to the element    
     setMenuHeight(height);
   }
 
@@ -80,18 +83,21 @@ function DropdownMenu() {
     in={activeMenu === 'main'} 
     unmountOnExit 
     timeout={500}
-    classNames="menu-default"
     // element is provided as an argument which allows use of function as the prop value and the height is pulled from the style attribute which pulls that from the state. 
-    onEnter={calcHeight}>
+    onEnter={calcHeight}
+    classNames="menu-default">
       <div className='menu'>
         <DropdownItem 
-          // rightIcon={<ChevRight />}
-          >Menu Item
+        leftIcon={<HomeIcon />}
+        >
+        <div>
+          <Link to="/">Main Page</Link>
+        </div>
         </DropdownItem>
         <DropdownItem 
           leftIcon={<SeasonsIcon />}
           rightIcon={<ChevRight />}
-          goToMenu="main"
+          goToMenu="seasons-menu"
           >Seasons
         </DropdownItem>
       </div>
@@ -101,31 +107,37 @@ function DropdownMenu() {
     in={activeMenu === 'seasons-menu'} 
     unmountOnExit 
     timeout={500}
+    onEnter={calcHeight}
     classNames="menu-secondary">
       <div className='menu'>
         <DropdownItem 
           leftIcon={<ChevLeft />}
+          goToMenu="main"          
           >Return
         </DropdownItem>
         <DropdownItem 
-          leftIcon={<SpringSeedling />}          
-          to="/spring"
-          >Spring
+          leftIcon={<SpringSeedling />}>
+            <div>
+              <Link to="/spring">Spring</Link>
+            </div>
         </DropdownItem>
         <DropdownItem 
-          leftIcon={<SummerUmbrella />}          
-          to="/summer"
-          >Summer
+          leftIcon={<SummerUmbrella />}>
+            <div>
+              <Link to="/summer">Summer</Link>
+            </div>
         </DropdownItem>
         <DropdownItem 
-          leftIcon={<FallLeaf />}          
-          to="/autumn"
-          >Autumn
+          leftIcon={<FallLeaf />}>
+            <div>
+              <Link to="/autumn">Autumn</Link>
+            </div>
         </DropdownItem>
         <DropdownItem 
-          leftIcon={<WinterSnowflake />}          
-          to="/winter"
-          >Winter
+          leftIcon={<WinterSnowflake />}>
+            <div>
+              <Link to="/winter">Winter</Link>
+            </div>
         </DropdownItem>
       </div>
     </CSSTransition>

@@ -84,16 +84,17 @@
     top: 70px;
     /* margin-top: 10vh; */
     width: 300px;
+    height: fit-content;
     /* move left */
     transform: translateX(-40%);
     background-color: var(--bg);
     border: var(--border);
     border-radius: var(--border-radius);
-    padding: 1rem;
+    margin: auto;
+    padding: 1rem;    
     /* hides overlapping child elements */
     overflow: hidden;
-
-    /* menu should shrink and grow based on size of current menu */
+    /* menu should shrink and grow based on size of current menu */    
     transition: height var(--speed) ease;
 }
 
@@ -112,7 +113,7 @@
 }
 
 .icon-right {
-    margin-left: auto;
+    margin-left: auto;    
 }
 
 .dropdown-menu-item .icon-button{
@@ -128,26 +129,31 @@
 }
 
 .left-icon{
-    margin: 0 10px 0 0;    
+    margin: 0 10px 0 0;
+    border-radius: 50%;
 }
 
 .right-icon{
-    margin: 0 0 0 10px;    
+    margin: 0 0 0 10px;
+    margin-left: auto;
+    background-color: transparent;
+    
 }
 
 /* defined menu animations where classes are added and removed based on state; when the prop is true, will add menu primary enter class then enter-active to div then after a timeout then it will add exit class then the exit-active class*/
 .menu-default-enter{
     position: absolute;
     transform: translateX(-110%);
+    padding-bottom: 1.5rem;
 }
 
 .menu-default-enter-active{    
     transform: translateX(0%);
-    transition: all var(--speed) ease;
+    transition: all var(--speed) ease;    
 }
 
 .menu-default-exit{
-    position: absolute;
+    position: absolute;    
 }
 
 .menu-default-exit-active{
@@ -157,6 +163,7 @@
 
 .menu-secondary-enter{    
     transform: translateX(110%);
+    padding-bottom: 1.5rem;
 }
 
 .menu-secondary-enter-active{    
